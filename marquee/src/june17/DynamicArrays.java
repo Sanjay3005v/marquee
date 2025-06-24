@@ -47,7 +47,7 @@ public class DynamicArrays {
 	}
 
 	public boolean insert(int index, int num) {
-		if (index < 0 || index >= arr.length) {
+		if (index < 0 || index > arr.length) {
 			return false;
 		}
 		if (isFull()) {
@@ -167,12 +167,13 @@ public class DynamicArrays {
 		System.out.println(a.prepend(40));
 		System.out.println(a.prepend(50));
 		System.out.println(a.prepend(90));
-		System.out.println("Capacity-" + a.arr.length);
-		System.out.println("Size-" + a.size());
+		System.out.println(a.getValue(3));
+		System.out.println("Capacity=" + a.arr.length);
+		System.out.println("Size=" + a.size());
 		a.print();
 		System.out.println(a.deleteLast());
-		System.out.println("Capacity-" + a.arr.length);
-		System.out.println("Size-" + a.size());
+		System.out.println("Capacity=" + a.arr.length);
+		System.out.println("Size=" + a.size());
 		a.print();
 	}
 }
