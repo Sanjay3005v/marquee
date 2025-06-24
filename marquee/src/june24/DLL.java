@@ -166,6 +166,16 @@ class DoublyLinkedList {
 			return;
 		}
 	}
+	public int getVal(int index) {
+		if(index>=0 && index<size){
+			Node temp=head;
+			for(int i=0;i<index;i++) {
+				temp=temp.next;
+			}
+			return temp.val;
+		}
+		return -1;
+	}
 }
 
 class Node {
