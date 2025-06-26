@@ -9,6 +9,11 @@ public class StackWithArrays {
 		list.push(30);
 		list.push(40);
 		list.push(50);
+		list.display();
+		System.out.println(list.pop());
+		System.out.println(list.pop());
+		System.out.println(list.pop());
+		System.out.println(list.pop());
 		System.out.println(list.pop());
 		System.out.println(list.pop());
 		list.display();
@@ -42,7 +47,7 @@ class ArrayStack {
 
 	public int pop() {
 		if (isEmpty()) {
-			System.err.println("StackUnderflow");
+			System.out.println("StackUnderflow");
 			return -1;
 		}
 		if (top < arr.length / 2) {
@@ -57,7 +62,7 @@ class ArrayStack {
 
 	public int peek() {
 		if (isEmpty()) {
-			System.err.println("StackUnderFlow");
+			System.out.println("StackUnderFlow");	
 			return -1;
 		} else {
 			return arr[top];
@@ -66,7 +71,7 @@ class ArrayStack {
 
 	public void display() {
 		if (isEmpty()) {
-			System.out.println();
+			System.out.println("StackUnderFlow");
 		} else {
 			for (int i = 0; i <= top; i++) {
 				System.out.print(arr[i] + " ");
