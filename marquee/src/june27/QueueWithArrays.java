@@ -67,6 +67,16 @@ class ArrayQueue {
 		int val = arr[front];
 		front = (front + 1) % arr.length;
 		size--;
+		if (size < arr.length / 2) {
+			int[] temp = new int[arr.length / 2];
+			for (int i = 0; i < size; i++) {
+				int j = (front + i) % arr.length;
+				temp[i] = arr[j];
+			}
+			arr = temp;
+			front = 0;
+			rear = size - 1;
+		}
 		return val;
 	}
 

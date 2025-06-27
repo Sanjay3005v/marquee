@@ -57,7 +57,7 @@ class SinglyLinkedList {
 		return;
 	}
 
-	public boolean  insert(int val, int index) {
+	public boolean insert(int val, int index) {
 		if (index == 0) {
 			prepend(val);
 			return true;
@@ -118,36 +118,39 @@ class SinglyLinkedList {
 		size--;
 		return true;
 	}
+
 	public boolean deleteIndex(int index) {
-		if(isEmpty() || index<0 || index>=size()) {
+		if (isEmpty() || index < 0 || index >= size()) {
 			return false;
 		}
-		if(index==0) {
+		if (index == 0) {
 			deleteFirst();
 			return true;
 		}
-		if(index==size()-1) {
+		if (index == size() - 1) {
 			deleteLast();
 			return false;
 		}
 		Node node = head;
-		for(int i=0;i<index-2;i++) {
+		for (int i = 0; i < index - 2; i++) {
 			node = node.next;
 		}
 		node.next = node.next.next;
 		size--;
 		return true;
 	}
+
 	public int getVal(int index) {
-		if(isEmpty()||index<0||index>=size()) {
+		if (isEmpty() || index < 0 || index >= size()) {
 			return -1;
 		}
 		Node node = head;
-		for(int i=0;i<index;i++) {
-			node=node.next;
+		for (int i = 0; i < index; i++) {
+			node = node.next;
 		}
 		return node.val;
 	}
+
 	public void print() {
 		for (Node node = head; node != null; node = node.next) {
 			System.out.print(node.val + " ");
