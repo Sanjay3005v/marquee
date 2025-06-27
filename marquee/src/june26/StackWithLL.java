@@ -17,29 +17,33 @@ public class StackWithLL {
 		System.out.println(list.pop());
 		list.display();
 	}
-	
+
 }
-class StackLL{
+
+class StackLL {
 	Node top;
-	
+
 	public boolean isEmpty() {
-		return top==null;
+		return top == null;
 	}
+
 	public void push(int val) {
 		Node node = new Node(val);
-		node.next=top;
-		top=node;
+		node.next = top;
+		top = node;
 		return;
 	}
+
 	public int pop() {
 		if (isEmpty()) {
 			System.out.println("StackUnderflow");
 			return -1;
 		}
-		int val=top.val;
-		top=top.next;
+		int val = top.val;
+		top = top.next;
 		return val;
 	}
+
 	public int peek() {
 		if (isEmpty()) {
 			System.out.println("StackUnderflow");
@@ -47,6 +51,7 @@ class StackLL{
 		}
 		return top.val;
 	}
+
 	public void display() {
 		if (isEmpty()) {
 			System.out.println("StackUnderflow");
@@ -54,16 +59,18 @@ class StackLL{
 		}
 		Node node = top;
 		do {
-			System.out.print(node.val+" ");
-			node=node.next;
-		}while(node!=null);
+			System.out.print(node.val + " ");
+			node = node.next;
+		} while (node != null);
 		return;
 	}
 }
-class Node{
+
+class Node {
 	int val;
 	Node next;
-	Node(int val){
+
+	Node(int val) {
 		this.val = val;
 	}
 }

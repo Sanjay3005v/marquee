@@ -17,19 +17,21 @@ public class Recursion {
 		System.out.println(multiply(n, p));
 		divisibleBy2and3(n);
 	}
-	
+
 	public static int multiply(int n, int p) {
-		if(p==0) {
+		if (p == 0) {
 			return 0;
 		}
-		return n+multiply(n,p-1);
+		return n + multiply(n, p - 1);
 	}
-	public static int pow(int n,int p) {
-		if(p<=0) {
+
+	public static int pow(int n, int p) {
+		if (p <= 0) {
 			return 1;
 		}
-		return n*pow(n,p-1);
+		return n * pow(n, p - 1);
 	}
+
 	public static int sum(int n) {
 		if (n == 1) {
 			return 1;

@@ -45,14 +45,14 @@ class ArrayQueue {
 
 	public boolean enqueue(int val) {
 		if (isFull()) {
-			int[] temp = new int[arr.length*2];
-			for (int i = 0; i < size ; i++) {
-				int j=(front+i)%arr.length;
-				temp[i]=arr[j];
+			int[] temp = new int[arr.length * 2];
+			for (int i = 0; i < size; i++) {
+				int j = (front + i) % arr.length;
+				temp[i] = arr[j];
 			}
-			arr=temp;
-			front=0;
-			rear=size;
+			arr = temp;
+			front = 0;
+			rear = size;
 		}
 		rear = (rear + 1) % arr.length;
 		arr[rear] = val;
@@ -71,7 +71,7 @@ class ArrayQueue {
 	}
 
 	public int peek() {
-		if(isEmpty()) {
+		if (isEmpty()) {
 			System.out.println("QueueUnderFlow");
 			return -1;
 		}
@@ -83,8 +83,8 @@ class ArrayQueue {
 			System.out.println("QueueUnderFlow");
 			return;
 		}
-		for (int i = 0; i < size ; i++) {
-			int j=(front+i)%arr.length;
+		for (int i = 0; i < size; i++) {
+			int j = (front + i) % arr.length;
 			System.out.print(arr[j] + " ");
 		}
 		return;

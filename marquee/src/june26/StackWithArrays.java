@@ -62,7 +62,7 @@ class ArrayStack {
 
 	public int peek() {
 		if (isEmpty()) {
-			System.out.println("StackUnderFlow");	
+			System.out.println("StackUnderFlow");
 			return -1;
 		} else {
 			return arr[top];
