@@ -1,17 +1,31 @@
 package june28;
 
-public class HashTable {
+public class HashTable<T> {
 	public static void main(String[] args) {
-	    HashTable ht = new HashTable();
+		HashTable<Integer> ht = new HashTable<>();
 
+		ht.insert(10);
+		ht.insert(20);
+		ht.insert(15);
+		ht.insert(25);
+		ht.insert(30);
+
+		System.out.print("HashTable contents: ");
+		ht.display();
+
+		System.out.println("Contains 15? " + ht.contains(15));
+		System.out.println("Contains 99? " + ht.contains(99));
+
+		ht.insert(10);
+		System.out.print("After inserting duplicate 10: ");
+		ht.display();
 	}
 
-
-	Node[] arr = new Node[10];
+	Node<T>[] arr = new Node[10];
 	int size;
 
-	public int hashFunction(int key) {
-		return key % arr.length;
+	public int hashFunction(T key) {
+		return Math.abs(key.hashCode() % arr.length);
 	}
 
 	public void display() {
@@ -19,7 +33,7 @@ public class HashTable {
 			System.out.println("[]");
 			return;
 		}
-		for (Node node : arr) {
+		for (Node<T> node : arr) {
 			if (node != null) {
 				while (node != null) {
 					System.out.print(node.val + " ");
@@ -30,37 +44,38 @@ public class HashTable {
 		System.out.println();
 	}
 
-	public boolean contains(int key) {
-		Node node =arr[hashFunction(key)];
-		while(node!=null) {
-			if(node.val==key) {
+	public boolean contains(T key) {
+		Node<T> node = arr[hashFunction(key)];
+		while (node != null) {
+			if (node.val.equals(key)) {
 				return true;
 			}
-			node=node.next;
+			node = node.next;
 		}
 		return false;
 	}
 
-	public boolean insert(int key) {
-		if (arr[hashFunction(key)] != null) {
-			Node node = arr[hashFunction(key)];
+	public boolean insert(T key) {
+		int index = hashFunction(key);
+		if (arr[index] != null) {
+			Node<T> node = arr[index];
 			while (node.next != null) {
 				node = node.next;
 			}
-			node.next = new Node(key);
+			node.next = new Node<>(key);
 		} else {
-			arr[hashFunction(key)] = new Node(key);
+			arr[index] = new Node<>(key);
 		}
 		size++;
 		return true;
 	}
 }
 
-class Node {
-	int val;
-	Node next;
+class Node<T> {
+	T val;
+	Node<T> next;
 
-	Node(int val) {
+	Node(T val) {
 		this.val = val;
 	}
 }
