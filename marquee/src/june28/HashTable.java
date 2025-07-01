@@ -13,8 +13,8 @@ public class HashTable<T> {
 		System.out.print("HashTable contents: ");
 		ht.display();
 
-		System.out.println("Contains 15? " + ht.contains(15));
-		System.out.println("Contains 99? " + ht.contains(99));
+		System.out.println("Contains 15: " + ht.contains(15));
+		System.out.println("Contains 99: " + ht.contains(99));
 
 		ht.insert(10);
 		System.out.print("After inserting duplicate 10: ");
@@ -25,7 +25,7 @@ public class HashTable<T> {
 	int size;
 
 	public int hashFunction(T key) {
-		return Math.abs(key.hashCode() % arr.length);
+		return key.hashCode() % arr.length;
 	}
 
 	public void display() {
