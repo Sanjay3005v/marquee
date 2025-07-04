@@ -22,8 +22,8 @@ public class HashTable<T> {
 		ht.display();
 
 		System.out.println("contains");
-		System.out.println( ht.contains(42));
-		System.out.println( ht.contains("Batman"));
+		System.out.println(ht.contains(42));
+		System.out.println(ht.contains("Batman"));
 		System.out.println(ht.contains(0.14));
 		System.out.println(ht.contains('A'));
 		System.out.println(ht.contains(true));
@@ -47,7 +47,8 @@ public class HashTable<T> {
 	int size;
 
 	public int hashFunction(T key) {
-		if (key == null) return 0;
+		if (key == null)
+			return 0;
 		return Math.abs(key.hashCode()) % arr.length;
 	}
 
@@ -78,8 +79,17 @@ public class HashTable<T> {
 	}
 
 	public boolean insert(T key) {
-		if((size/arr.length)>0.75) {
-			
+		if (((double) size / arr.length) > 0.75) {
+			Node<T> temp[] = new Node[(int) (arr.length * 1.5)];
+			Node<T> old[] = arr;
+			arr = temp;
+			size = 0;
+			for (Node<T> n : old) {
+				while (n != null) { 
+					insert(n.val);
+					n = n.next;
+				}
+			}
 		}
 		int index = hashFunction(key);
 		Node<T> node = arr[index];
@@ -92,7 +102,7 @@ public class HashTable<T> {
 
 		while (node != null) {
 			if ((key == null && node.val == null) || (key != null && key.equals(node.val))) {
-				return false; 
+				return false;
 			}
 			if (node.next == null) {
 				break;

@@ -2,7 +2,7 @@ package july1;
 
 public class generics {
 	public static void main(String[] args) {
-		Demo<String> d = new Demo<>("Hello");
+		Demo<Integer> d = new Demo<>(10);
 		System.out.println(d.getValue());
 	}
 }
