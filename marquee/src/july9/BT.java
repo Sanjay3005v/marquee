@@ -130,7 +130,7 @@ public class BT {
 
 		queue.addLast(parent);
 		while (!queue.isEmpty()) {
-			Node node = queue.peek();
+			Node node = queue.peek(); 
 			if (node.left != null) {
 				queue.addLast(node.left);
 			}
