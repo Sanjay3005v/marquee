@@ -1,8 +1,9 @@
 package july9;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class BT {
+
 	Scanner scan = new Scanner(System.in);
 
 	class Node {
@@ -23,6 +24,9 @@ public class BT {
 		tree.insert();
 		tree.display();
 		tree.preorder();
+		tree.postorder();
+		tree.inorder();
+		tree.levelorder();
 	}
 
 	public void insert() {
@@ -57,16 +61,18 @@ public class BT {
 	}
 
 	public void display(Node parent, int level) {
-		System.out.println("  ".repeat(level) + parent.val);
+		System.out.println("  |".repeat(level) + parent.val);
 		if (parent.left != null) {
 			display(parent.left, level + 1);
 		}
 		if (parent.right != null) {
 			display(parent.right, level + 1);
 		}
+		System.out.println();
 	}
 
 	public void preorder() {
+		System.out.println();
 		System.out.println("PreOrder Traversal");
 		preorder(root);
 	}
@@ -82,30 +88,57 @@ public class BT {
 	}
 
 	public void postorder() {
+		System.out.println();
+		System.out.println("PostOrder Traversal");
 		postorder(root);
 	}
 
 	public void postorder(Node parent) {
 		if (parent.left != null) {
-			preorder(parent.left);
+			postorder(parent.left);
 		}
 		if (parent.right != null) {
-			preorder(parent.right);
+			postorder(parent.right);
 		}
 		System.out.print(parent.val + " ");
 	}
 
 	public void inorder() {
+		System.out.println();
+		System.out.println("InOrder Traversal");
 		inorder(root);
 	}
 
 	public void inorder(Node parent) {
 		if (parent.left != null) {
-			preorder(parent.left);
+			inorder(parent.left);
 		}
 		System.out.print(parent.val + " ");
 		if (parent.right != null) {
-			preorder(parent.right);
+			inorder(parent.right);
+		}
+	}
+
+	public void levelorder() {
+		System.out.println();
+		System.out.println("levelOrder Traversal");
+		levelorder(root);
+	}
+
+	public void levelorder(Node parent) {
+		LinkedList<Node> queue = new LinkedList<>();
+
+		queue.addLast(parent);
+		while (!queue.isEmpty()) {
+			Node node = queue.peek();
+			if (node.left != null) {
+				queue.addLast(node.left);
+			}
+			if (node.right != null) {
+				queue.addLast(node.right);
+			}
+			System.out.print(node.val + " ");
+			queue.removeFirst();
 		}
 	}
 }
