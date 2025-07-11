@@ -47,11 +47,11 @@ public class BalancedBST {
 		return parent;
 	}
 
-	public Node Rotate(Node node) {
-		if (height(node.left) - height(node.right) > 1) {
-			
-		}
-	}
+//	public Node Rotate(Node node) {
+//		if (height(node.left) - height(node.right) > 1) {
+//			
+//		}
+//	}
 
 	public Node leftRotate(Node node) {
 		Node mid = node.right;
