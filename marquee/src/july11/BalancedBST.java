@@ -15,7 +15,7 @@ public class BalancedBST {
 	Node root;
 	int size;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) {	
 		BalancedBST tree = new BalancedBST();
 		int[] arr = { 10, 5, 15, 3, 7, 12, 20 };
 		for (int val : arr) {
@@ -43,7 +43,7 @@ public class BalancedBST {
 			parent.right = add(parent.right, val);
 		}
 		size++;
-		parent.height = Math.max(height(parent.left), height(parent.right) + 1);
+		parent.height = Math.max(height(parent.left), height(parent.right))+1;
 		return parent;
 	}
 
