@@ -15,9 +15,9 @@ public class BalancedBST {
 	Node root;
 	int size;
 
-	public static void main(String[] args) {	
+	public static void main(String[] args) {
 		BalancedBST tree = new BalancedBST();
-		int[] arr = { 10, 5, 15, 3, 7, 12, 20 };
+		int[] arr = {50,40,30,20,10 };
 		for (int val : arr) {
 			tree.add(val);
 		}
@@ -39,25 +39,39 @@ public class BalancedBST {
 		}
 		if (parent.val > val) {
 			parent.left = add(parent.left, val);
-		} else if (parent.val < val) {
+		}else if (parent.val < val) {
 			parent.right = add(parent.right, val);
 		}
-		size++;
-		parent.height = Math.max(height(parent.left), height(parent.right))+1;
-		return parent;
+
+		parent.height = Math.max(height(parent.left), height(parent.right)) + 1;
+		return Rotate(parent);
 	}
 
-//	public Node Rotate(Node node) {
-//		if (height(node.left) - height(node.right) > 1) {
-//			
-//		}
-//	}
+	public Node Rotate(Node node) {
+		if (height(node.left) - height(node.right) > 1) {
+			if (height(node.left.left) - height(node.left.right) > 0) {
+				return rightRotate(node);
+			} else {
+				node.left = leftRotate(node.left);
+				return rightRotate(node);
+			}
+		}
+		if (height(node.right) - height(node.left) > 1) {
+			if (height(node.right.right) - height(node.right.left) > 0) {
+				return leftRotate(node);
+			} else {
+				node.right = rightRotate(node.right);
+				return leftRotate(node);
+			}
+		}
+		return node;
+	}
 
 	public Node leftRotate(Node node) {
 		Node mid = node.right;
 		Node ro = mid.left;
 		mid.left = node;
-		mid.right = ro;
+		node.right = ro;
 		node.height = Math.max(height(node.left), height(node.right)) + 1;
 		mid.height = Math.max(height(mid.left), height(mid.right)) + 1;
 		return mid;

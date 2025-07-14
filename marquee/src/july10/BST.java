@@ -21,7 +21,7 @@ public class BST {
 	public static void main(String[] args) {
 
 		BST tree = new BST();
-		int[] arr = { 10, 5, 15, 3, 7, 12, 20 };
+		int[] arr = { 10, 20,30,40,50};
 		for (int val : arr) {
 			tree.add(val);
 		}
