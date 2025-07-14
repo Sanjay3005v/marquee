@@ -26,7 +26,7 @@ public class BST {
 			tree.add(val);
 		}
 
-		System.out.println("Dispaly");
+		System.out.println("Display");
 		tree.display();
 
 		System.out.println("========================");
