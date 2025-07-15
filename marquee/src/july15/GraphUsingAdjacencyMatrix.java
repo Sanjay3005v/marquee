@@ -39,7 +39,7 @@ public class GraphUsingAdjacencyMatrix {
 			matrix[j][i] = 0;
 		}
 	}
-
+	
 	public static void main(String[] args) {
 		String arr[] = { "A", "B", "C", "D", "E" };
 		GraphUsingAdjacencyMatrix g = new GraphUsingAdjacencyMatrix(arr);
