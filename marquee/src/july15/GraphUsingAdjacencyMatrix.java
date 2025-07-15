@@ -26,17 +26,18 @@ public class GraphUsingAdjacencyMatrix {
 	}
 
 	public void add(int i, int j) {
-		if (matrix[i][j] == 0) {
-			System.out.println("No Edges between the nodes");
-		} else {
-			matrix[i][j] = 1;
-			matrix[j][i] = 1;
-		}
+		matrix[i][j] = 1;
+		matrix[j][i] = 1;
+
 	}
 
 	public void delete(int i, int j) {
-		matrix[i][j] = 0;
-		matrix[j][i] = 0;
+		if (matrix[i][j] == 0) {
+			System.out.println("No Edges between the nodes");
+		} else {
+			matrix[i][j] = 0;
+			matrix[j][i] = 0;
+		}
 	}
 
 	public static void main(String[] args) {
