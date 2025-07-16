@@ -70,7 +70,6 @@ public class GraphUsingAdjacencyMatrix {
 		visited[0] = true;
 		while (!queue.isEmpty()) {
 			Value cur = queue.removeFirst();
-			System.out.print(cur.data + "  ");
 			for (Value val : getNeighbors(cur)) {
 				if (val == null) {
 					continue;
@@ -80,6 +79,7 @@ public class GraphUsingAdjacencyMatrix {
 					visited[val.index] = true;
 				}
 			}
+			System.out.print(cur.data + "  ");
 		}
 	}
 
