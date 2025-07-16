@@ -29,8 +29,8 @@ public class GraphUsingAdjacencyListType2 {
 	public void display() {
 		for (Value val : nodeList) {
 			System.out.print(val.data + " : ");
-			for (String str : val.neighbors) {
-				System.out.print(str + "--->");
+			for (int i = 0; i < val.neighbors.size(); i++) {
+				System.out.print(val.neighbors.get(i) + (i == val.neighbors.size() - 1 ? "" : "--->"));
 			}
 			System.out.println();
 		}
