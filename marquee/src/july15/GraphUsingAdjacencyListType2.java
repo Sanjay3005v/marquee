@@ -53,7 +53,25 @@ public class GraphUsingAdjacencyListType2 {
 			}
 			System.out.print(cur.data + " ");
 		}
+		System.out.println();
+	}
 
+	public void DFS() {
+		LinkedList<Value> stack = new LinkedList<Value>();
+		boolean[] visited = new boolean[nodeList.size()];
+		stack.addLast(nodeList.get(0));
+		visited[0] = true;
+		while (!stack.isEmpty()) {
+			Value cur = stack.removeLast();
+			for (Value val : cur.neighbors) {
+				if (!visited[val.index]) {
+					stack.addLast(val);
+					visited[val.index] = true;
+				}
+			}
+			System.out.print(cur.data + " ");
+		}
+		System.out.println();
 	}
 
 	public static void main(String[] args) {
@@ -73,6 +91,6 @@ public class GraphUsingAdjacencyListType2 {
 		g.add(2, 4);
 		g.display();
 		g.BFS();
-
+		g.DFS();
 	}
 }
