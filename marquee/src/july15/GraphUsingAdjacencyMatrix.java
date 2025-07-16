@@ -1,5 +1,7 @@
 package july15;
 
+import java.util.LinkedList;
+
 public class GraphUsingAdjacencyMatrix {
 	static class Value {
 		String data;
@@ -50,6 +52,37 @@ public class GraphUsingAdjacencyMatrix {
 		}
 	}
 
+	public Value[] getNeighbors(Value val) {
+		Value[] arr = new Value[nodes.length];
+		int j = 0;
+		for (int i = 0; i < nodes.length; i++) {
+			if (matrix[val.index][i] == 1) {
+				arr[j++] = nodes[i];
+			}
+		}
+		return arr;
+	}
+
+	public void BFS() {
+		LinkedList<Value> queue = new LinkedList<>();
+		boolean[] visited = new boolean[nodes.length];
+		queue.addLast(nodes[0]);
+		visited[0] = true;
+		while (!queue.isEmpty()) {
+			Value cur = queue.removeFirst();
+			System.out.print(cur.data + "  ");
+			for (Value val : getNeighbors(cur)) {
+				if (val == null) {
+					continue;
+				}
+				if (!visited[val.index]) {
+					queue.addLast(val);
+					visited[val.index] = true;
+				}
+			}
+		}
+	}
+
 	public static void main(String[] args) {
 		Value arr[] = { new Value("A", 0), new Value("B", 1), new Value("C", 2), new Value("D", 3), new Value("E", 4) };
 		GraphUsingAdjacencyMatrix g = new GraphUsingAdjacencyMatrix(arr);
@@ -62,5 +95,6 @@ public class GraphUsingAdjacencyMatrix {
 		g.display();
 		g.delete(1, 4);
 		g.display();
+		g.BFS();
 	}
 }
