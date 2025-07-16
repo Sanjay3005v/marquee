@@ -64,6 +64,7 @@ public class GraphUsingAdjacencyMatrix {
 	}
 
 	public void BFS() {
+
 		LinkedList<Value> queue = new LinkedList<>();
 		boolean[] visited = new boolean[nodes.length];
 		queue.addLast(nodes[0]);
@@ -81,6 +82,28 @@ public class GraphUsingAdjacencyMatrix {
 			}
 			System.out.print(cur.data + "  ");
 		}
+		System.out.println();
+	}
+
+	public void DFS() {
+		LinkedList<Value> stack = new LinkedList<>();
+		boolean[] visited = new boolean[nodes.length];
+		stack.addLast(nodes[0]);
+		visited[0] = true;
+		while (!stack.isEmpty()) {
+			Value cur = stack.removeLast();
+			for (Value val : getNeighbors(cur)) {
+				if (val == null) {
+					continue;
+				}
+				if (!visited[val.index]) {
+					stack.addLast(val);
+					visited[val.index] = true;
+				}
+			}
+			System.out.print(cur.data + "  ");
+		}
+		System.out.println();
 	}
 
 	public static void main(String[] args) {
@@ -88,13 +111,13 @@ public class GraphUsingAdjacencyMatrix {
 		GraphUsingAdjacencyMatrix g = new GraphUsingAdjacencyMatrix(arr);
 		g.add(0, 1);
 		g.add(0, 3);
-		g.add(1, 2);
+		g.add(0, 2);
 		g.add(1, 4);
 		g.add(3, 4);
-		g.add(2, 4);
+		g.add(2, 3);
 		g.display();
-		g.delete(1, 4);
 		g.display();
 		g.BFS();
+		g.DFS();
 	}
 }
