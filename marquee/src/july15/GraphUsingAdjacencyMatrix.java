@@ -1,22 +1,32 @@
 package july15;
 
 public class GraphUsingAdjacencyMatrix {
-	String nodes[];
+	static class Value {
+		String data;
+		int index;
+
+		Value(String data, int index) {
+			this.data = data;
+			this.index = index;
+		}
+	}
+
+	Value nodes[];
 	int matrix[][];
 
-	public GraphUsingAdjacencyMatrix(String nodes[]) {
+	public GraphUsingAdjacencyMatrix(Value nodes[]) {
 		this.nodes = nodes;
 		matrix = new int[nodes.length][nodes.length];
 	}
 
 	public void display() {
 		System.out.print("  ");
-		for (String str : nodes) {
-			System.out.print(str + " ");
+		for (Value val : nodes) {
+			System.out.print(val.data + " ");
 		}
 		System.out.println();
 		for (int i = 0; i < matrix.length; i++) {
-			System.out.print(nodes[i] + " ");
+			System.out.print(nodes[i].data + " ");
 			for (int n : matrix[i]) {
 				System.out.print(n + " ");
 			}
@@ -39,9 +49,9 @@ public class GraphUsingAdjacencyMatrix {
 			matrix[j][i] = 0;
 		}
 	}
-	
+
 	public static void main(String[] args) {
-		String arr[] = { "A", "B", "C", "D", "E" };
+		Value arr[] = { new Value("A", 0), new Value("B", 1), new Value("C", 2), new Value("D", 3), new Value("E", 4) };
 		GraphUsingAdjacencyMatrix g = new GraphUsingAdjacencyMatrix(arr);
 		g.add(0, 1);
 		g.add(0, 3);

@@ -36,7 +36,7 @@ public class GraphUsingAdjacencyList {
 		neighbors.get(i).add(second);
 		neighbors.get(j).add(first);
 	}
-
+	
 	public void display() {
 		for (int i = 0; i < nodes.size(); i++) {
 			System.out.print(nodes.get(i) + " : ");
