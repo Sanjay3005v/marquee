@@ -28,37 +28,37 @@ public class Arraylist {
 		a.add(200.5132);
 		o.add(o);
 		o.addAll(a);
-		//o.addFirst("first");
+		// o.addFirst("first");
 		o.addLast("last");
-		//System.out.println(o);
+		// System.out.println(o);
 		o.remove(1);// index
 		o.remove("last");
 		o.remove(a.remove("list"));
-		//o.removeFirst();
+		// o.removeFirst();
 		o.removeLast();
 		o.add(15);
 		o.add(25);
-		//System.out.println(o);
-		//o.removeAll(o);
+		// System.out.println(o);
+		// o.removeAll(o);
 //		System.out.println(o);
-		//System.out.println();
+		// System.out.println();
 		o.add(new Pen("red", 10));
 //		System.out.println(o);
 //		System.out.println();
 		Iterator itr = o.iterator();
-		while(itr.hasNext()) {
+		while (itr.hasNext()) {
 			Object val = itr.next();
 			if (val instanceof Integer) {
 				Integer new_name = (Integer) val;
-				
-				System.out.print(new_name+"  ");
-				
+
+				System.out.print(new_name + "  ");
+
 			}
-			
+
 		}
 		System.out.println();
-		for(Object val:o) {
-			System.out.print(val+"   ");
+		for (Object val : o) {
+			System.out.print(val + "   ");
 		}
 		System.out.println();
 		ListIterator li = o.listIterator();
